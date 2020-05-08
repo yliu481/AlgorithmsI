@@ -15,7 +15,7 @@ public class PercolationStats {
     private void runExperiments(int n, int trials) {
         for (int i = 0; i < trials; i++) {
             testCollection[i] = runExperiment(n);
-        } 	
+        }
     }
 
     private double runExperiment(int n) {
@@ -27,7 +27,7 @@ public class PercolationStats {
             if (!test.isOpen(row, col)) {
                 test.open(row, col);
                 openNode++;
-            }   		
+            }
         } while (!test.percolates());
         return (double) openNode / ((double) n * n);
     }
@@ -71,17 +71,14 @@ public class PercolationStats {
                 n = Integer.parseInt(args[0]);
                 trials = Integer.parseInt(args[1]);
                 PercolationStats abc = new PercolationStats(n, trials);
-
                 System.out.println("mean                    = " + abc.mean());
                 System.out.println("stddev                  = " + abc.stddev());
                 System.out.println("95% confidence interval = [" + abc.confidenceLo() + ", " + abc.confidenceHi() + "]");
-
             } catch (NumberFormatException e) {
                 System.err.println("Argument" + args[0] + " must be an integer.");
                 System.err.println("Argument" + args[1] + " must be an integer.");
             }
         }
         System.out.println(time.elapsedTime());
-
     }
 }
